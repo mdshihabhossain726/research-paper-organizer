@@ -20,7 +20,7 @@ A Python desktop application for organizing research notes. This repository cont
 
 ## Screenshots
 
-_Add screenshots of the running application here after testing it locally._
+![Research Paper Organizer application screenshot](app-preview.PNG)
 
 ## Run from Source (Windows)
 
