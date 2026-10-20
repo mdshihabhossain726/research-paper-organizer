@@ -1,0 +1,10 @@
+# Part 2 Roadmap — Research Paper Organizer
+
+Features planned for the second progress/final version:
+1. Automatic keyword extraction from research notes.
+2. Image insertion into notes.
+3. APA citation generation and citation metadata management.
+4. Export notes to PDF and DOCX.
+5. Testing, bug fixes, UI polish, report, and final demo.
+
+LaTeX document generation and BibTeX citation output are intentionally excluded.
