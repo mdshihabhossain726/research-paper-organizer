@@ -74,3 +74,9 @@ LaTeX document generation and BibTeX citation output are not included in this pr
 ## Project Status
 
 This is an academic project prototype. The Windows executable has not been included in this repository. Build and test it locally before presenting or distributing it.
+
+## 🤝 Connect With Me
+
+- GitHub: [@mdshihabhossain726](https://github.com/mdshihabhossain726)
+- Email: mdshihabhossain726@gmail.com
+- Linkedin: [Md Shihab Hossain](https://www.linkedin.com/in/mdshihabhossain726/).
