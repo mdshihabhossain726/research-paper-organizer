@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+.env
+
+# Local application data
+*.db
+*.sqlite
+*.sqlite3
+
+# PyInstaller/build output
+build/
+dist/
+*.spec.bak
+
+# IDE/OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
