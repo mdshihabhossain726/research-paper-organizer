@@ -112,7 +112,6 @@ The app creates a local `research_notes.db` file.
 - [ ] 🖼️ Image insertion in notes
 - [ ] 📑 APA-style citation generation and citation metadata management
 - [ ] 📤 PDF and DOCX export
-- [ ] ⌨️ Smart editor: `/` suggestions with Tab, formatting toolbar, shortcuts
 - [ ] ✅ Testing, accessibility/UI polish, and project documentation
 
 > LaTeX document generation and BibTeX citation output are not included in this project scope.

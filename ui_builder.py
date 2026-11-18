@@ -4,12 +4,14 @@ Builds the 3-panel window: sidebar (notes list + search), editor, live preview.
 Used by ResearchApp as a mixin, so every `self.xxx` widget is created here.
 """
 from PyQt6.QtWidgets import (
-    QWidget, QHBoxLayout, QVBoxLayout, QTextEdit, QListWidget, QPushButton,
+    QWidget, QHBoxLayout, QVBoxLayout, QListWidget, QPushButton,
     QLabel, QLineEdit, QSplitter, QFrame,
 )
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QKeySequence, QShortcut
 from PyQt6.QtWebEngineWidgets import QWebEngineView
+
+from editor_assist import MarkdownEditor
 
 
 class UIBuilderMixin:
@@ -111,11 +113,13 @@ class UIBuilderMixin:
         header.addWidget(self.word_count_label)
         layout.addLayout(header)
 
-        self.editor = QTextEdit()
+        layout.addLayout(self._build_format_toolbar())
+
+        self.editor = MarkdownEditor()
         self.editor.setObjectName("editor")
-        self.editor.setAcceptRichText(False)
         self.editor.setPlaceholderText(
             "Write your research notes in Markdown…\n\n"
+            "Tip: type  /  for suggestions (Tab to insert)  -  /h1  /table  /flow  /math\n"
             "Shortcodes: [flow]step one<br>step two[/flow]  and  [math]E = mc/2[/math]"
         )
         self.editor.textChanged.connect(self.on_content_changed)
@@ -132,6 +136,30 @@ class UIBuilderMixin:
         layout.addLayout(footer)
 
         return card
+
+    def _build_format_toolbar(self):
+        """Small button row: each button inserts a Markdown snippet (see editor_assist.SNIPPETS)."""
+        row = QHBoxLayout()
+        row.setSpacing(4)
+        buttons = [
+            ("B", "bold", "Bold (Ctrl+B)"), ("I", "italic", "Italic (Ctrl+I)"),
+            ("H1", "h1", "Heading 1"), ("H2", "h2", "Heading 2"),
+            ("\u2022", "list", "Bullet list"), ("1.", "numbered", "Numbered list"),
+            ("\u275d", "quote", "Quote"), ("</>", "code", "Inline code"),
+            ("Link", "link", "Link (Ctrl+K)"), ("Table", "table", "Table"),
+            ("\u2500", "line", "Horizontal line"),
+        ]
+        for text, key, tip in buttons:
+            btn = QPushButton(text)
+            btn.setToolTip(tip)
+            btn.setCursor(Qt.CursorShape.PointingHandCursor)
+            btn.setFixedHeight(28)
+            btn.setMinimumWidth(32)
+            btn.setStyleSheet("padding: 2px 8px;")
+            btn.clicked.connect(lambda _checked=False, k=key: self.editor.insert_snippet(k))
+            row.addWidget(btn)
+        row.addStretch()
+        return row
 
     def _build_preview_panel(self):
         card, layout = self._make_card()
