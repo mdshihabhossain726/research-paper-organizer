@@ -5,7 +5,6 @@ changes) and the event handlers (new / save / open / delete note, search).
 """
 import sys
 import os
-
 from PyQt6.QtWidgets import QApplication, QMainWindow, QListWidgetItem, QMessageBox
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QFont
